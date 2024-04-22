@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          'Bienvenido al Registro de Certificador',
+          'Estamos avanzando',
           style: TextStyle(fontFamily: 'San Francisco', fontSize: 18.0),
         ),
       ),
