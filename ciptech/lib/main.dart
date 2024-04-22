@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          'Estamos avanzando',
+          'Ciptech 2024',
           style: TextStyle(fontFamily: 'San Francisco', fontSize: 18.0),
         ),
       ),
