@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Configuracion.dart';
+import 'DM_Configuracion.dart';
 
 class OpcionUsuario extends StatefulWidget {
   @override

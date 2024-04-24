@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'DM.dart'; // Importa la pantalla del formulario DM
+import 'DM_DatosCliente.dart'; // Importa la pantalla del formulario DM
 
 void main() => runApp(MyApp());
 

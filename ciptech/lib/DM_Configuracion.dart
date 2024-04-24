@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'DM_ValorBalance.dart'; // Asegúrate de importar DM_ValorBalance.dart
 
 class Configuracion extends StatelessWidget {
   final String? idioma;
@@ -12,6 +13,9 @@ class Configuracion extends StatelessWidget {
   final String? collGap;
   final String? valorDeFiltro;
   final String? ftc;
+  final String? modoVelocidad;
+  final String? constanteCTB; // Nueva variable para la constante de la CTB
+  final String? velocidadCinta; // Nueva variable para la velocidad de la Cinta
 
   Configuracion({
     this.idioma,
@@ -25,6 +29,9 @@ class Configuracion extends StatelessWidget {
     this.collGap,
     this.valorDeFiltro,
     this.ftc,
+    this.modoVelocidad,
+    this.constanteCTB, // Inicializa la nueva variable
+    this.velocidadCinta, // Inicializa la nueva variable
   });
 
   @override
@@ -66,6 +73,13 @@ class Configuracion extends StatelessWidget {
                     (value) {}),
                 SizedBox(height: 16.0),
                 _buildTextField('FTC', ftc, (value) {}),
+                SizedBox(height: 16.0),
+                _buildDropdownButton(
+                    'Modo de Velocidad', modoVelocidad, ['Variable', 'Fija'], (newValue) {}),
+                SizedBox(height: 16.0),
+                _buildTextField('Constante de la CTB', constanteCTB, (value) {}), // Nueva caja de texto
+                SizedBox(height: 16.0),
+                _buildTextField('Velocidad de la Cinta', velocidadCinta, (value) {}), // Nueva caja de texto
                 SizedBox(height: 70.0),
               ],
             ),
@@ -74,7 +88,11 @@ class Configuracion extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.pop(context); // Regresar a la pantalla anterior
+          // Navegar a la pantalla DM_ValorBalance
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DM_ValorBalance()),
+          );
         },
         label: Text('Siguiente'),
         icon: Icon(Icons.arrow_forward),

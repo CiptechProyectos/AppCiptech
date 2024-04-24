@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'Opcion_Usuario.dart'; // Importa Opcion_Usuario.dart aquí
+import 'DM_OpcionUsuario.dart'; // Importa Opcion_Usuario.dart aquí
 
 class DMDatosEquipo extends StatefulWidget {
   @override
   _DMDatosEquipoState createState() => _DMDatosEquipoState();
 }
+
 
 class _DMDatosEquipoState extends State<DMDatosEquipo> {
   String selectedLinea = 'Loma System';
