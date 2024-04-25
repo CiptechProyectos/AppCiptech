@@ -6,7 +6,7 @@ class DM_ValorDetector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DM Valor Detector'),
+        title: Text('6.- Valores de Detector'),
       ),
       body: Center(
         child: Column(

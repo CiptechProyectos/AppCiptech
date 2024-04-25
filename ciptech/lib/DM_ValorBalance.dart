@@ -34,92 +34,147 @@ class _DM_ValorBalanceState extends State<DM_ValorBalance> {
     'Banda 10': ['52 Khz', '89 Khz', '221 Khz', '536 Khz', '939 Khz'],
   };
 
+  // Parámetros de Ferrita
+  String? frecuencia;
+  String? umbral;
+  String? fase;
+  String? aumentoCabezal;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DM Valor Balance'),
+        title: Text('5.- Valores de Balance'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'DM Valor Balance',
-              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-            ),
-            
-            SizedBox(height: 20.0),
-            DropdownButton<String>(
-              hint: Text('Seleccione banda'),
-              value: selectedBanda,
-              onChanged: (String? value) {
-                setState(() {
-                  selectedBanda = value;
-                });
-              },
-              items: bandas.map((String banda) {
-                return DropdownMenuItem<String>(
-                  value: banda,
-                  child: Text(banda),
-                );
-              }).toList(),
-            ),
-            SizedBox(height: 20.0),
-            if (selectedBanda != null)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Registrar Valor Balance',
+                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 20.0),
+              DropdownButton<String>(
+                hint: Text('Seleccione banda:   '),
+                value: selectedBanda,
+                onChanged: (String? value) {
+                  setState(() {
+                    selectedBanda = value;
+                  });
+                },
+                items: bandas.map((String banda) {
+                  return DropdownMenuItem<String>(
+                    value: banda,
+                    child: Text(banda),
+                  );
+                }).toList(),
+              ),
+              SizedBox(height: 20.0),
+              if (selectedBanda != null)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Ingrese los valores:',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: bandasDatos[selectedBanda!]!.map((dato) => _buildSmallTextField(dato, '', (value) {})).toList(),
+                    ),
+                  ],
+                ),
+              SizedBox(height: 20.0),
+              Text(
+                'Parámetros ADC:',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10.0),
+              Row(
                 children: [
-                  Text(
-                    'Ingrese los valores:',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 10.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: bandasDatos[selectedBanda!]!.map((dato) => _buildSmallTextField(dato, '', (value) {})).toList(),
-                  ),
+                  _buildSmallTextField('P', '', (value) {}),
+                  SizedBox(width: 10.0),
+                  _buildSmallTextField('Q', '', (value) {}),
                 ],
               ),
-            SizedBox(height: 20.0),
-            Row(
-              children: [
-                Text(
-                  'Parámetros ADC:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(width: 20.0),
-                _buildSmallTextField('P', '', (value) {}),
-                SizedBox(width: 10.0),
-                _buildSmallTextField('Q', '', (value) {}),
-              ],
-            ),
-          ],
+              SizedBox(height: 20.0),
+              Text(
+                'Parámetros de Ferrita:',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10.0),
+              _buildLargeTextField('Frecuencia', frecuencia ?? '', (value) {
+                setState(() {
+                  frecuencia = value;
+                });
+              }),
+              SizedBox(height: 10.0),
+              _buildLargeTextField('Umbral', umbral ?? '', (value) {
+                setState(() {
+                  umbral = value;
+                });
+              }),
+              SizedBox(height: 10.0),
+              _buildLargeTextField('Fase', fase ?? '', (value) {
+                setState(() {
+                  fase = value;
+                });
+              }),
+              SizedBox(height: 10.0),
+              _buildLargeTextField('Aumento de Cabezal', aumentoCabezal ?? '', (value) {
+                setState(() {
+                  aumentoCabezal = value;
+                });
+              }),
+              SizedBox(height: 80.0),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // Navegar a la pantalla DM_ValorDetector
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DM_ValorDetector()),
-          );
-        },
-        label: Text('Siguiente'),
-        icon: Icon(Icons.arrow_forward),
-        backgroundColor: Colors.blue,
+      floatingActionButton: Container(
+        margin: EdgeInsets.only(top: 16.0), // Ajusta el margen superior según tus necesidades
+        child: FloatingActionButton.extended(
+          onPressed: () {
+            // Navegar a la pantalla DM_ValorDetector
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DM_ValorDetector()),
+            );
+          },
+          label: Text('Siguiente'),
+          icon: Icon(Icons.arrow_forward),
+          backgroundColor: Colors.blue,
+        ),
       ),
     );
   }
 
   Widget _buildSmallTextField(String labelText, String value, Function(String) onChanged) {
-    return SizedBox(  
-      width: 80.0,
+    return SizedBox(
+      width: 80.0, // Ancho ajustado para los campos de texto pequeños
       child: TextField(
         onChanged: onChanged,
         decoration: InputDecoration(
           labelText: labelText,
+          labelStyle: TextStyle(fontSize: 15.0),
+          border: OutlineInputBorder(),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLargeTextField(String labelText, String value, Function(String) onChanged) {
+    return SizedBox(
+      width: 500.0, // Ancho ajustado para los campos de texto grandes
+      child: TextField(
+        onChanged: onChanged,
+        decoration: InputDecoration(
+          labelText: labelText,
+          labelStyle: TextStyle(fontSize: 15.0),
           border: OutlineInputBorder(),
         ),
       ),

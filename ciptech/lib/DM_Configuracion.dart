@@ -38,7 +38,7 @@ class Configuracion extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Configuración'),
+        title: Text('4.- Configuración'),
       ),
       body: SafeArea(
         child: Padding(

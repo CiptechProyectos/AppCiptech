@@ -5,7 +5,7 @@ class DM_ConfiguracionProducto extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DM Datos del Servicio'),
+        title: Text('8.- Datos del Servicio'),
       ),
       body: SafeArea(
         child: Padding(
@@ -14,9 +14,9 @@ class DM_ConfiguracionProducto extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Datos del Servicio:'),
+                Text('Ingresar Datos del Servicio:'),
                 SizedBox(height: 20.0),
-                _buildTextField('Diagsnotico', '', (value) {}),
+                _buildTextField('Diagnostico', '', (value) {}),
                 SizedBox(height: 16.0),
                 _buildTextField('Recomendaciones', '', (value) {}),
                 SizedBox(height: 16.0),

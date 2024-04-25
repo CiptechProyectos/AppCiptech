@@ -81,7 +81,7 @@ class _DMDatosEquipoState extends State<DMDatosEquipo> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Datos del Equipo'),
+        title: Text('2.- Datos del Equipo'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
