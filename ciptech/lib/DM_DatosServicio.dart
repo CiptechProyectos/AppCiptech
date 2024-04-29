@@ -16,14 +16,12 @@ class DM_ConfiguracionProducto extends StatelessWidget {
               children: [
                 Text('Ingresar Datos del Servicio:'),
                 SizedBox(height: 20.0),
-                _buildTextField('Diagnostico', '', (value) {}),
+                _buildTextField('Validación Inicial', '', (value) {}, 5), // Ajuste de maxLines
                 SizedBox(height: 16.0),
-                _buildTextField('Recomendaciones', '', (value) {}),
+                _buildTextField('Acciones Correctivas', '', (value) {}, 5), // Ajuste de maxLines
                 SizedBox(height: 16.0),
-                _buildTextField('Acciones Correctivas', '', (value) {}),
-                SizedBox(height: 16.0),
-                _buildTextField('Incidentes', '', (value) {}),
-                SizedBox(height: 16.0),
+                _buildTextField('Recomendaciones', '', (value) {}, 5), // Ajuste de maxLines
+                SizedBox(height: 16.0), 
               ],
             ),
           ),
@@ -41,9 +39,10 @@ class DM_ConfiguracionProducto extends StatelessWidget {
   }
 
   Widget _buildTextField(
-      String labelText, String value, Function(String) onChanged) {
+      String labelText, String value, Function(String) onChanged, int maxLines) { // Agregar maxLines como parámetro
     return TextField(
       onChanged: onChanged,
+      maxLines: maxLines, // Ajustar el número de líneas
       decoration: InputDecoration(
         labelText: labelText,
         border: OutlineInputBorder(),

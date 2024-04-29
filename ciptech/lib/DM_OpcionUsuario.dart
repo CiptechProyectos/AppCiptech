@@ -32,7 +32,7 @@ class _OpcionUsuarioState extends State<OpcionUsuario> {
               Text('Registro de Opciones de Usuario:'),
               SizedBox(height: 20.0),
               // Aquí es donde necesitas 3 argumentos para la función _buildDropdownButton
-              _buildDropdownButton('¿Calibración de Datos?',
+              _buildDropdownButton('¿Calibración de Producto?',
                   calibracionSeleccionada, ['Sí', 'No']),
               SizedBox(height: 20.0),
               _buildDropdownButton('¿Acceso de Ferrita?',
@@ -43,7 +43,7 @@ class _OpcionUsuarioState extends State<OpcionUsuario> {
               SizedBox(height: 20.0),
 
               // Campos de texto
-              _buildTextField('Tamaño del Producto', tamanoProducto, (value) {
+              _buildTextField('Tamaño del Producto (Longitud)', tamanoProducto, (value) {
                 setState(() {
                   tamanoProducto = value; // Guardar el valor ingresado
                 });

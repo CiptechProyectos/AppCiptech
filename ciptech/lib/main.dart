@@ -15,11 +15,11 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           backgroundColor:
               Color.fromARGB(255, 37, 122, 161), // Misma combinación
-          elevation: 0, // Sin sombra para un estilo limpio
+          elevation: 0, 
           titleTextStyle: TextStyle(
             fontFamily: 'San Francisco',
             fontSize: 18.0,
-            color: Colors.white, // Blanco para contraste
+            color: Colors.white,
           ),
         ),
         textTheme: TextTheme(

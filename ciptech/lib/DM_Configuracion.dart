@@ -48,18 +48,22 @@ class Configuracion extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Registrar Configuración:'),
-                SizedBox(height: 20.0),
-                _buildTextField('Idioma', idioma, (value) {}),
                 SizedBox(height: 16.0),
-                _buildTextField('Tipo Máquina', tipoMaquina, (value) {}),
+                _buildDropdownButton(
+                    'Idioma', fotocelula, ['Inglés', 'Español','Portugues'], (newValue) {}),
+                SizedBox(height: 16.0),
+                _buildDropdownButton(
+                    'Tipo de Máquina', fotocelula, ['Cinta', 'Caída libre','Tuberia'], (newValue) {}),
                 SizedBox(height: 16.0),
                 _buildTextField('Cabezal', cabezal, (value) {}),
                 SizedBox(height: 16.0),
-                _buildTextField('Unidades', unidades, (value) {}),
+                _buildDropdownButton(
+                    'Unidades', fotocelula, ['Métricas', 'Imperial'], (newValue) {}),
                 SizedBox(height: 16.0),
-                _buildTextField('Banda', banda, (value) {}),
+                _buildDropdownButton(
+                    'Nº Banda', fotocelula, ['Banda 1', 'Banda 2','Banda 3','Banda 4','Banda 5','Banda 6','Banda 7','Banda 8','Banda 9','Banda 10'], (newValue) {}),
                 SizedBox(height: 16.0),
-                _buildTextField('Default', defaultConfig, (value) {}),
+                _buildTextField('Frecuencia (Default)', defaultConfig, (value) {}),
                 SizedBox(height: 16.0),
                 _buildTextField(
                     'Longitud de Caudal', longitudDeCaudal, (value) {}),
