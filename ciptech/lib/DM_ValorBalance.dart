@@ -81,25 +81,94 @@ class _DM_ValorBalanceState extends State<DM_ValorBalance> {
                       'Ingrese los valores:',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 10.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: bandasDatos[selectedBanda!]!.map((dato) => _buildSmallTextField(dato, '', (value) {})).toList(),
+                    SizedBox(height: 20.0),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: bandasDatos[selectedBanda!]!
+                              .sublist(0, 2)
+                              .map((dato) {
+                            return Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 10.0),
+                                child:
+                                    _buildSmallTextField(dato, '', (value) {}),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                        SizedBox(
+                            height:
+                                10.0), // Separación vertical entre las filas
+                        Row(
+                          children: bandasDatos[selectedBanda!]!
+                              .sublist(2, 4)
+                              .map((dato) {
+                            return Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 10.0),
+                                child:
+                                    _buildSmallTextField(dato, '', (value) {}),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                        SizedBox(
+                            height:
+                                10.0), // Separación vertical entre las filas
+                        Row(
+                          mainAxisAlignment:
+                              MainAxisAlignment.center, // Alineación central
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: 80.0,
+                                    right:
+                                        80.0), // Ajuste a la izquierda y derecha
+                                child: _buildSmallTextField(
+                                  bandasDatos[selectedBanda!]!.last,
+                                  '',
+                                  (value) {},
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              SizedBox(height: 20.0),
-              Text(
-                'Parámetros ADC:',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10.0),
-              Row(
-                children: [
-                  _buildSmallTextField('P', '', (value) {}),
-                  SizedBox(width: 10.0),
-                  _buildSmallTextField('Q', '', (value) {}),
-                ],
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Parámetros ADC:',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10.0),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width:
+                              150.0, // Ancho ajustado para el primer cuadro de texto
+                          child: _buildSmallTextField('P', '', (value) {}),
+                        ),
+                        SizedBox(
+                            width:
+                                20.0), // Espacio horizontal entre los cuadros de texto
+                        SizedBox(
+                          width:
+                              150.0, // Ancho ajustado para el segundo cuadro de texto
+                          child: _buildSmallTextField('Q', '', (value) {}),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 20.0),
               Text(
@@ -125,7 +194,8 @@ class _DM_ValorBalanceState extends State<DM_ValorBalance> {
                 });
               }),
               SizedBox(height: 10.0),
-              _buildLargeTextField('Aumento de Cabezal', aumentoCabezal ?? '', (value) {
+              _buildLargeTextField('Aumento de Cabezal', aumentoCabezal ?? '',
+                  (value) {
                 setState(() {
                   aumentoCabezal = value;
                 });
@@ -136,7 +206,8 @@ class _DM_ValorBalanceState extends State<DM_ValorBalance> {
         ),
       ),
       floatingActionButton: Container(
-        margin: EdgeInsets.only(top: 16.0), // Ajusta el margen superior según tus necesidades
+        margin: EdgeInsets.only(
+            top: 16.0), // Ajusta el margen superior según tus necesidades
         child: FloatingActionButton.extended(
           onPressed: () {
             // Navegar a la pantalla DM_ValorDetector
@@ -153,9 +224,10 @@ class _DM_ValorBalanceState extends State<DM_ValorBalance> {
     );
   }
 
-  Widget _buildSmallTextField(String labelText, String value, Function(String) onChanged) {
+  Widget _buildSmallTextField(
+      String labelText, String value, Function(String) onChanged) {
     return SizedBox(
-      width: 80.0, // Ancho ajustado para los campos de texto pequeños
+      width: 196.0, // Ancho ajustado para los campos de texto pequeños
       child: TextField(
         onChanged: onChanged,
         decoration: InputDecoration(
@@ -167,9 +239,10 @@ class _DM_ValorBalanceState extends State<DM_ValorBalance> {
     );
   }
 
-  Widget _buildLargeTextField(String labelText, String value, Function(String) onChanged) {
+  Widget _buildLargeTextField(
+      String labelText, String value, Function(String) onChanged) {
     return SizedBox(
-      width: 500.0, // Ancho ajustado para los campos de texto grandes
+      width: 435.0, // Ancho ajustado para los campos de texto grandes
       child: TextField(
         onChanged: onChanged,
         decoration: InputDecoration(

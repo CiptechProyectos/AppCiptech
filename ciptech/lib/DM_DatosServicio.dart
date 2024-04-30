@@ -31,7 +31,7 @@ class DM_ConfiguracionProducto extends StatelessWidget {
         onPressed: () {
           // Aquí puedes agregar la lógica para guardar la configuración
         },
-        label: Text('Siguiente'),
+        label: Text('Finalizar'),
         icon: Icon(Icons.arrow_forward),
         backgroundColor: Colors.blue,
       ),

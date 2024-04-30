@@ -6,7 +6,6 @@ class DMDatosEquipo extends StatefulWidget {
   _DMDatosEquipoState createState() => _DMDatosEquipoState();
 }
 
-
 class _DMDatosEquipoState extends State<DMDatosEquipo> {
   String selectedLinea = 'Loma System';
   String selectedModelo = '';
@@ -51,9 +50,9 @@ class _DMDatosEquipoState extends State<DMDatosEquipo> {
   final TextEditingController serieController = TextEditingController();
   final TextEditingController frecuenciaController = TextEditingController();
   final TextEditingController versionController1 =
-      TextEditingController(text: 'v1 ');
+      TextEditingController(text: ' ');
   final TextEditingController versionController2 =
-      TextEditingController(text: 'v2 ');
+      TextEditingController(text: ' ');
   final TextEditingController codigoEquipoController = TextEditingController();
   final TextEditingController lineaAreaController = TextEditingController();
   final TextEditingController tipoCintaController = TextEditingController();
@@ -153,6 +152,7 @@ class _DMDatosEquipoState extends State<DMDatosEquipo> {
                       decoration: InputDecoration(
                         labelText: 'Versión de Software CPU',
                         border: OutlineInputBorder(),
+                        prefixText: 'v1 ', // Agregar prefijo 'v1 '
                       ),
                     ),
                   ),
@@ -163,6 +163,7 @@ class _DMDatosEquipoState extends State<DMDatosEquipo> {
                       decoration: InputDecoration(
                         labelText: 'Versión de Software GUI',
                         border: OutlineInputBorder(),
+                        prefixText: 'v2 ', // Agregar prefijo 'v2 '
                       ),
                     ),
                   ),

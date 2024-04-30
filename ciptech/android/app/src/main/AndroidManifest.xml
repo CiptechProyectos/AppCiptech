@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="ciptech"
-        android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Ciptech Certificaciones"
+        android:name="Ciptech Certificaciones"
+        android:icon="@mipmap/logociptech">
         <activity
             android:name=".MainActivity"
             android:exported="true"
