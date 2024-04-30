@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'DM_DatosCliente.dart'; // Importa la pantalla del formulario DM
+import 'dart:async'; // Importa dart:async para usar el temporizador
 
 void main() => runApp(MyApp());
 
@@ -10,12 +11,10 @@ class MyApp extends StatelessWidget {
       title: 'Registro de Certificador',
       theme: ThemeData(
         primarySwatch: Colors.blue, // Mantener el primarySwatch
-        primaryColor:
-            Color.fromARGB(255, 37, 122, 161), // Color principal consistente
+        primaryColor: Color.fromARGB(255, 37, 122, 161), // Color principal consistente
         appBarTheme: AppBarTheme(
-          backgroundColor:
-              Color.fromARGB(255, 37, 122, 161), // Misma combinación
-          elevation: 0, 
+          backgroundColor: Color.fromARGB(255, 37, 122, 161), // Misma combinación
+          elevation: 0,
           titleTextStyle: TextStyle(
             fontFamily: 'San Francisco',
             fontSize: 18.0,
@@ -29,7 +28,30 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomePage(),
+      home: SplashScreen(), // Mostrar SplashScreen como pantalla de inicio
+    );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Iniciar el temporizador para esperar 2 segundos antes de avanzar a la pantalla principal
+    Timer(Duration(seconds: 2), () {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomePage()));
+    });
+
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/inicio.png'), // Imagen de la SplashScreen
+            SizedBox(height: 20), // Espacio entre la imagen y el indicador de carga
+            CircularProgressIndicator(), // Indicador de carga
+          ],
+        ),
+      ),
     );
   }
 }
@@ -58,31 +80,26 @@ class HomePage extends StatelessWidget {
               accountName: Text("Usuario"),
               accountEmail: Text("tecnico@cipsa.com.pe"),
               currentAccountPicture: CircleAvatar(
-                backgroundColor: Color.fromARGB(
-                    255, 89, 165, 201), // Color de fondo para avatar
+                backgroundColor: Color.fromARGB(255, 89, 165, 201), // Color de fondo para avatar
                 child: Text(
                   "U", // Inicial del usuario
                   style: TextStyle(fontFamily: 'San Francisco', fontSize: 24.0),
                 ),
               ),
               decoration: BoxDecoration(
-                color: Color.fromARGB(
-                    255, 37, 122, 161), // Consistente con el color principal
+                color: Color.fromARGB(255, 37, 122, 161), // Consistente con el color principal
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 1.0),
               child: ExpansionTile(
-                leading: Icon(Icons.assignment,
-                    color: Color.fromARGB(
-                        255, 37, 122, 161)), // Ícono con color consistente
+                leading: Icon(Icons.assignment, color: Color.fromARGB(255, 37, 122, 161)), // Ícono con color consistente
                 title: Text(
                   'Certificación',
                   style: TextStyle(
                     fontFamily: 'San Francisco',
                     fontSize: 16.0,
-                    color: Color.fromARGB(
-                        255, 0, 0, 0), // Ajustar el color del texto
+                    color: Color.fromARGB(255, 0, 0, 0), // Ajustar el color del texto
                   ),
                 ),
                 children: <Widget>[
@@ -92,13 +109,10 @@ class HomePage extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: 'San Francisco',
                         fontSize: 16.0,
-                        color: Color.fromARGB(
-                            255, 0, 0, 0), // Mantener el color del texto
+                        color: Color.fromARGB(255, 0, 0, 0), // Mantener el color del texto
                       ),
                     ),
-                    leading: Icon(Icons.add,
-                        color: Color.fromARGB(
-                            255, 37, 122, 161)), // Ícono con color consistente
+                    leading: Icon(Icons.add, color: Color.fromARGB(255, 37, 122, 161)), // Ícono con color consistente
                     children: <Widget>[
                       _buildAlignedListTile('DM', context),
                       _buildAlignedListTile('RX', context),
@@ -110,9 +124,7 @@ class HomePage extends StatelessWidget {
             ),
             Divider(), // División para separación visual
             ListTile(
-              leading: Icon(Icons.settings,
-                  color: Color.fromARGB(
-                      255, 37, 122, 161)), // Consistencia en íconos
+              leading: Icon(Icons.settings, color: Color.fromARGB(255, 37, 122, 161)), // Consistencia en íconos
               title: Text(
                 'Configuración',
                 style: TextStyle(fontFamily: 'San Francisco', fontSize: 16.0),
@@ -124,9 +136,7 @@ class HomePage extends StatelessWidget {
             ),
             Divider(), // División para separación visual
             ListTile(
-              leading: Icon(Icons.history,
-                  color: Color.fromARGB(
-                      255, 37, 122, 161)), // Color para consistencia
+              leading: Icon(Icons.history, color: Color.fromARGB(255, 37, 122, 161)), // Color para consistencia
               title: Text(
                 'Historial',
                 style: TextStyle(
